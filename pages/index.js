@@ -2,8 +2,10 @@ import React from "react";
 import Head from "next/head";
 import Header from "../components/Header";
 import Banner from "../components/Banner";
+import SmallCard from "../components/SmallCard";
+import MediumCard from "../components/MediumCard";
 
-export default function Home() {
+export default function Home({ exploreData, cardsData }) {
   return (
     <>
       <Head>
@@ -17,7 +19,45 @@ export default function Home() {
       </Head>
       <Header />
       <Banner />
-      {/* banner goes here */}
+      <main className='mx-auto max-w-7xl px-8 sm:px-16'>
+        <section className='pt-16'>
+          <h2 className='pb-5 text-4xl font-semibold'>Explore Nearby</h2>
+          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4'>
+            {exploreData?.map((item) => (
+              <SmallCard
+                img={item.img}
+                distance={item.distance}
+                location={item.location}
+                key={item.img}
+              />
+            ))}
+          </div>
+        </section>
+        <section>
+          <h2 className='py-8 text-4xl font-semibold'>Live Anywhere</h2>
+          <div className='scroll-bar-hide -ml-3 flex items-center space-x-3 overflow-scroll p-3 md:scrollbar-default'>
+            {cardsData?.map((item) => (
+              <MediumCard img={item.img} title={item.title} key={item.title} />
+            ))}
+          </div>
+        </section>
+      </main>
     </>
   );
+}
+
+export async function getStaticProps() {
+  const exploreData = await fetch("https://www.jsonkeeper.com/b/4G1G").then(
+    (res) => res.json()
+  );
+
+  const cardsData = await fetch("https://www.jsonkeeper.com/b/VHHT").then(
+    (res) => res.json()
+  );
+  return {
+    props: {
+      exploreData,
+      cardsData,
+    },
+  };
 }

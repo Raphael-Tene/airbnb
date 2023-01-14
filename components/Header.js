@@ -26,7 +26,7 @@ export default function Header() {
         <input
           type='text'
           placeholder='Start your search'
-          className='flex-grow bg-transparent pl-5 text-sm text-gray-400 placeholder-gray-400 outline-none'
+          className='flex-grow bg-transparent pl-5 text-sm  text-gray-400 placeholder-gray-400 placeholder-opacity-0 outline-none md:placeholder-opacity-50'
         />{" "}
         <HiOutlineSearch
           size={35}
