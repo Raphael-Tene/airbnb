@@ -10,35 +10,35 @@ import {
 
 export default function Header() {
   return (
-    <header className="sticky p-5 md:px-10 top-0 z-50 shadow-md  shadow-gray-200 bg-white grid grid-cols-3 w-full">
+    <header className='sticky top-0 z-50 grid w-full grid-cols-3  bg-white p-5 shadow-md shadow-gray-200 md:px-10'>
       {/* logo */}
-      <div className="relative flex  items-center my-auto h-10 cursor-pointer">
+      <div className='relative my-auto  flex h-10 cursor-pointer items-center'>
         <Image
-          className=" object-fill object-left"
-          src="https://links.papareact.com/qd3"
+          className=' object-fill object-left'
+          src='https://links.papareact.com/qd3'
           width={100}
           height={300}
-          alt="headerLogo"
+          alt='headerLogo'
         />
       </div>
       {/* search */}
-      <div className="flex items-center md:shadow-md md:border-2 py-2 rounded-full shadow-gray-200 ">
+      <div className='flex items-center rounded-full py-2 shadow-gray-200 md:border-2 md:shadow-md '>
         <input
-          type="text"
-          placeholder="Start your search"
-          className="outline-none flex-grow bg-transparent placeholder-gray-400 text-sm text-gray-400 pl-5"
+          type='text'
+          placeholder='Start your search'
+          className='flex-grow bg-transparent pl-5 text-sm text-gray-400 placeholder-gray-400 outline-none'
         />{" "}
         <HiOutlineSearch
           size={35}
-          className="bg-red-300 sm:hidden hidden md:inline-flex md:mx-2 text-white rounded-full cursor-pointer mx-auto p-2"
+          className='mx-auto hidden cursor-pointer rounded-full bg-red-300 p-2 text-white sm:hidden md:mx-2 md:inline-flex'
         />
       </div>
-      <div className="flex items-center justify-end space-x-2 text-gray-500">
-        <p className="hidden md:inline tracking-wider cursor-pointer">
+      <div className='flex items-center justify-end space-x-2 text-gray-500'>
+        <p className='hidden cursor-pointer tracking-wider md:inline'>
           Become a host
         </p>
-        <HiGlobeAlt size={30} className="cursor-pointer" />
-        <div className="flex items-center rounded-full border-2 space-x-2 shadow-md shadow-gray-200 p-4 cursor-pointer">
+        <HiGlobeAlt size={30} className='cursor-pointer' />
+        <div className='flex cursor-pointer items-center space-x-2 rounded-full border-2 p-4 shadow-md shadow-gray-200'>
           <HiOutlineMenu size={30} />
           <HiUserCircle size={30} />
         </div>
