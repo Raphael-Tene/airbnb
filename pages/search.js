@@ -1,13 +1,13 @@
-// @ts-nocheck
 import { useRouter } from "next/router";
 import React from "react";
 import FilterTag from "../components/FilterTag";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import InfoCard from "../components/InfoCard";
 
 export default function Search({ searchResults }) {
   const router = useRouter();
-  console.log(searchResults);
+
   const { endDate, startDate, location, noOfGuests } = router.query;
 
   // @ts-ignore
@@ -24,15 +24,15 @@ export default function Search({ searchResults }) {
     year: "numeric",
     timeZone: "UTC",
   });
-  //   const range = `${formatedStartDate} - ${formatedEndDate}`;
+  const range = `${formatedStartDate} -${formatedEndDate}`;
 
   return (
     <div>
-      <Header />
+      <Header placeholder={`${location} | ${range} | ${noOfGuests}`} />
       <main className='flex'>
         <section className='flex-grow px-6 pt-14'>
           <p className='text-xs'>
-            {/* 300+ ({range}) Stays for {noOfGuests} guests. */}
+            300+ ({range}) Stays for {noOfGuests} guests.
           </p>
           <h1 className='mt-s mb-6 text-3xl font-semibold'>
             Stays in {location}
@@ -43,6 +43,20 @@ export default function Search({ searchResults }) {
             <FilterTag>Price </FilterTag>
             <FilterTag>Rooms and Beds </FilterTag>
             <FilterTag>More Filters </FilterTag>
+          </div>
+          <div className='flex flex-col'>
+            {searchResults.map((item) => (
+              <InfoCard
+                img={item.img}
+                location={item.location}
+                price={item.price}
+                star={item.star}
+                key={item.title}
+                description={item.description}
+                title={item.title}
+                total={item.total}
+              />
+            ))}
           </div>
         </section>
       </main>
