@@ -3,18 +3,27 @@ import React from "react";
 import FilterTag from "../components/FilterTag";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import { format } from "date-fns";
 
-export default function Search() {
+export default function Search({ searchResults }) {
   const router = useRouter();
-
+  console.log(searchResults);
   const { endDate, startDate, location, noOfGuests } = router.query;
 
   // @ts-ignore
-  const formatedStartDate = format(new Date(startDate), "dd-MM-yyyy");
+  const formatedStartDate = new Date(startDate).toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  });
   // @ts-ignore
-  const formatedEndDate = format(new Date(endDate), "dd-MM-yyyy");
-  const range = `${formatedStartDate}-${formatedEndDate}`;
+  const formatedEndDate = new Date(endDate).toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+  const range = `${formatedStartDate} - ${formatedEndDate}`;
 
   return (
     <div>
@@ -39,4 +48,13 @@ export default function Search() {
       <Footer />
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  const searchResults = await fetch("https://www.jsonkeeper.com/b/5NPS").then(
+    (res) => res.json()
+  );
+  return {
+    props: { searchResults },
+  };
 }
