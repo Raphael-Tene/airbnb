@@ -1,6 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 import React, { useState } from "react";
+import { useRouter } from "next/router";
+
 import {
   HiOutlineSearch,
   HiGlobeAlt,
@@ -9,8 +10,10 @@ import {
 } from "react-icons/hi";
 import DatePicker from "./DatePicker";
 
-export default function Header() {
+export default function Header({ placeholder }) {
   const [searchInput, setSearchInput] = useState("");
+
+  const router = useRouter();
 
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
@@ -30,18 +33,21 @@ export default function Header() {
     setSearchInput("");
   }
 
+  const homeNavigator = () => {
+    router.push("/");
+  };
+
   return (
     <header className='sticky top-0 z-50 grid w-full grid-cols-3  bg-white p-5 shadow-md shadow-gray-200 md:px-10'>
       {/* logo */}
       <div className='relative my-auto  flex h-10 cursor-pointer items-center'>
-        <Link href='/'>
-          <Image
-            className=' w-10 object-contain object-left'
-            src='https://links.papareact.com/qd3'
-            fill
-            alt='headerLogo'
-          />
-        </Link>
+        <Image
+          onClick={homeNavigator}
+          className=' w-10 object-contain object-left'
+          src='https://links.papareact.com/qd3'
+          fill
+          alt='headerLogo'
+        />
       </div>
       {/* search */}
       <div className='flex items-center rounded-full py-2 shadow-gray-200 md:border-2 md:shadow-md '>
@@ -49,7 +55,7 @@ export default function Header() {
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
           type='text'
-          placeholder='Start your search'
+          placeholder={placeholder || "Start your search"}
           className='flex-grow bg-transparent pl-5 text-[10px] text-gray-400  placeholder-gray-400  caret-red-300 outline-none md:text-sm'
         />{" "}
         <HiOutlineSearch
@@ -70,6 +76,9 @@ export default function Header() {
       <div className='col-span-1 mx-auto flex flex-col md:col-span-3'>
         {searchInput && (
           <DatePicker
+            endDate={endDate}
+            startDate={startDate}
+            searchInput={searchInput}
             resetInput={resetInputHandler}
             selectionRange={selectionRange}
             minDate={new Date()}

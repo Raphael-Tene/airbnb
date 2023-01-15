@@ -4,7 +4,7 @@ import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRangePicker } from "react-date-range";
 import { HiUsers } from "react-icons/hi";
-import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function DatePicker({
   selectionRange,
@@ -12,8 +12,24 @@ export default function DatePicker({
   rangeColors,
   onChange,
   resetInput,
+  searchInput,
+  startDate,
+  endDate,
 }) {
   const [noOfGuests, setNoOfGuests] = useState(1);
+  const router = useRouter();
+
+  const searchNavigator = () => {
+    router.push({
+      pathname: "/search",
+      query: {
+        location: searchInput,
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString(),
+        noOfGuests,
+      },
+    });
+  };
 
   return (
     <>
@@ -43,8 +59,10 @@ export default function DatePicker({
           Cancel
         </button>
 
-        <button className='text-semibold flex-grow rounded-lg  text-red-400'>
-          <Link href='/search'>Search</Link>
+        <button
+          onClick={searchNavigator}
+          className='text-semibold flex-grow rounded-lg  text-red-400'>
+          Search
         </button>
       </div>
     </>
