@@ -7,6 +7,10 @@
     color-scheme: dark;
   }
 } */
+
+body {
+  box-sizing: border-box;
+}
 @layer base {
   body {
     @apply bg-slate-200;
