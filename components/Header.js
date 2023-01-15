@@ -14,10 +14,9 @@ export default function Header() {
       {/* logo */}
       <div className='relative my-auto  flex h-10 cursor-pointer items-center'>
         <Image
-          className=' object-fill object-left'
+          className=' w-10 object-contain object-left'
           src='https://links.papareact.com/qd3'
-          width={100}
-          height={300}
+          fill
           alt='headerLogo'
         />
       </div>
@@ -26,7 +25,7 @@ export default function Header() {
         <input
           type='text'
           placeholder='Start your search'
-          className='flex-grow bg-transparent pl-5 text-sm  text-gray-400 placeholder-gray-400 placeholder-opacity-0 outline-none md:placeholder-opacity-50'
+          className='flex-grow bg-transparent pl-5 text-[10px] text-gray-400  placeholder-gray-400  caret-red-300 outline-none md:text-sm'
         />{" "}
         <HiOutlineSearch
           size={35}

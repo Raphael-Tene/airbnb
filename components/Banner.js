@@ -7,14 +7,14 @@ export default function Banner() {
       <Image
         src='https://links.papareact.com/0fm'
         alt='bannerPhoto'
-        layout='fill'
-        objectFit='cover'
+        fill
+        className='object-cover'
       />
       <div className='absolute  top-1/2 w-full text-center'>
-        <p className='text-sm lg:text-lg text-gray-900 tracking-widest'>
+        <p className='text-sm tracking-widest text-gray-900 lg:text-lg'>
           Not sure where to go? Perfect.
         </p>
-        <button className='rounded-full items-center shadow-md bg-white justify-center my-3 py-4 px-10 text-indigo-500 font-bold text-xl hover:shadow-xl active:scale-90 transition duration-150'>{`I'm flexible`}</button>
+        <button className='my-3 items-center justify-center rounded-full bg-white py-4 px-10 text-xl font-bold text-indigo-500 shadow-md transition duration-150 hover:shadow-xl active:scale-90'>{`I'm flexible`}</button>
       </div>
     </div>
   );
