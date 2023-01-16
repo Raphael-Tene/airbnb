@@ -25,7 +25,7 @@ function MyMap({ searchResults }) {
 
   return (
     <Map
-      mapboxAccessToken={process.env.API_TOKEN}
+      mapboxAccessToken='pk.eyJ1IjoiYWdlbnR0YW5nbyIsImEiOiJjbGN4c3gwengwZnJxM29xbDQ2b3Y1NHlnIn0.ibC-Ceg1KoIBZCg6PwAcgA'
       {...initialViewState}
       onMove={(event) => setInitialViewState(event.viewState)}
       mapStyle='mapbox://styles/agenttango/clcxtucxm001k14mwfc0r42cq'>
