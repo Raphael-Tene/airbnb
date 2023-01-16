@@ -60,7 +60,7 @@ export default function Search({ searchResults }) {
             ))}
           </div>
         </section>
-        <section className='hidden xl:inline-flex  xl:min-w-[600px]'>
+        <section className='relative top-0 left-0 hidden xl:inline-flex  xl:min-w-[600px]'>
           <MyMap searchResults={searchResults} />
         </section>
       </main>
