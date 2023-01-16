@@ -28,7 +28,7 @@ export default function Search({ searchResults }) {
   const range = `${formatedStartDate} - ${formatedEndDate}`;
 
   return (
-    <div>
+    <div className='absolute'>
       <Header placeholder={`${location} | ${range} | ${noOfGuests}`} />
       <main className='flex'>
         <section className='flex-grow px-6 pt-14'>
