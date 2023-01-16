@@ -7,13 +7,13 @@ import { HiLocationMarker } from "react-icons/hi";
 
 function MyMap({ searchResults }) {
   // transform results into coordinates
-
+  const [location, setLocation] = useState({});
   const coordinates = searchResults?.map((result) => ({
     longitude: result.long,
     latitude: result.lat,
   }));
 
-  const center = geolib.getCenter(coordinates.lat);
+  const center = geolib.getCenter(coordinates);
 
   const [initialViewState, setInitialViewState] = useState({
     width: "100%",
@@ -40,21 +40,9 @@ function MyMap({ searchResults }) {
                 onClick={() => {
                   setLocation(result);
                 }}
-              />
+              />{" "}
             </div>
           </Marker>
-          {/* {location.longitude === result.long ? (
-            <Popup
-              onClose={() => {
-                setLocation([]);
-              }}
-              latitude={result.lat}
-              longitude={result.long}>
-              <p>{result.title}</p>
-            </Popup>
-          ) : (
-            false
-          )} */}
         </div>
       ))}
     </Map>
