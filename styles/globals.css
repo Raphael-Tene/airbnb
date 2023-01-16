@@ -13,6 +13,6 @@ body {
 }
 @layer base {
   body {
-    @apply bg-red-50;
+    @apply bg-slate-100;
   }
 }
